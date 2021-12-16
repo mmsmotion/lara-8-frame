@@ -14,26 +14,46 @@
                         </div>
                     @endif
 
-
-                        @php
-
-                        $myName = "hein htet zan";
-
-                        @endphp
-
-
-
-                        <x-alert color="success" mark="30" :href="$myName" >
-                            San kyi tar
-                        </x-alert>
-
-                        <x-alert>
-                            kyaw gyi
-                        </x-alert>
+                        <button class="aa btn btn-primary" >Show Alert</button>
+                        <button class="bb btn btn-primary" >Show toast</button>
 
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section("foot")
+    <script>
+
+        document.querySelector(".aa").addEventListener("click",function (){
+            Swal.fire({
+                icon: 'info',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
+        });
+
+        document.querySelector(".bb").addEventListener("click",_=>{
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'center',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Signed in successfully'
+            })
+        });
+
+    </script>
 @endsection

@@ -7,6 +7,10 @@
 @import '~bootstrap/scss/bootstrap';
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
+// swal config
+$swal2-confirm-button-background-color : $primary;
+@import "~sweetalert2/src/sweetalert2";
+
 
 .brand-logo{
     filter: drop-shadow(0px 1px 0 #00000030);
