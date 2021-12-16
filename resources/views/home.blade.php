@@ -9,17 +9,28 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success"  role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
 
-                        <form action="{{ route('logout') }}" method="post">
-                            @csrf
-                            <button class="btn btn-primary">Logout</button>
-                        </form>
 
-                    {{ __('You are logged in!') }}
+                        @php
+
+                        $myName = "hein htet zan";
+
+                        @endphp
+
+
+
+                        <x-alert color="success" mark="30" :href="$myName" >
+                            San kyi tar
+                        </x-alert>
+
+                        <x-alert>
+                            kyaw gyi
+                        </x-alert>
+
                 </div>
             </div>
         </div>
