@@ -9,20 +9,51 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success"  role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
 
-                        <form action="{{ route('logout') }}" method="post">
-                            @csrf
-                            <button class="btn btn-primary">Logout</button>
-                        </form>
+                        <button class="aa btn btn-primary" >Show Alert</button>
+                        <button class="bb btn btn-primary" >Show toast</button>
 
-                    {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section("foot")
+    <script>
+
+        document.querySelector(".aa").addEventListener("click",function (){
+            Swal.fire({
+                icon: 'info',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
+        });
+
+        document.querySelector(".bb").addEventListener("click",_=>{
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'center',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Signed in successfully'
+            })
+        });
+
+    </script>
 @endsection
