@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\ProfileController;
+
 Route::get('/', function () {
     return view('welcome');
 })->name('index');
@@ -24,4 +26,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware("auth")->group(function(){
     Route::view("test","test")->name('test');
+
+    Route::prefix("profile")->name("profile.")->group(function(){
+        Route::view("/","profile.index")->name('index');
+        Route::get("/change-password",[ProfileController::class,'changePassword'])->name('change-password');
+    });
 });
