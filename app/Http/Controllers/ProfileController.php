@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Info;
 use App\Models\User;
 use App\Rules\MatchOldPassword;
 use Illuminate\Http\Request;
@@ -33,7 +35,23 @@ class ProfileController extends Controller
         $currentUser->password = Hash::make($request->password);
         $currentUser->update();
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('login')->with('toast',Info::showToast('success','Password Change'));
+
+    }
+
+    public function updatePhoto(Request $request){
+        $request->validate([
+            'photo' => 'required|mimes:png,jpeg,gif'
+        ]);
+
+        $newName = uniqid()."_profile.".$request->file('photo')->extension();
+        $request->file('photo')->storeAs("public/user-photo",$newName);
+
+        $currentUser = User::find(Auth::id());
+        $currentUser->photo = $newName;
+        $currentUser->update();
+
+        return redirect()->back()->with('toast',Info::showToast('success','Profile Photo Updated'));
 
     }
 }
