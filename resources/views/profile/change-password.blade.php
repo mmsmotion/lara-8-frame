@@ -18,7 +18,8 @@
 {{--                        <a href="{{ route('profile.index') }}" class="btn btn-outline-primary">Article List</a>--}}
                     </div>
                     <div class="">
-                        <form action="" method="post">
+                        <form action="{{ route('profile.change-password') }}" method="post">
+                            @csrf
                             <div class="mb-3">
                                 <label class="form-label">Current Password</label>
                                 <input type="password" class="form-control" name="current_password">
