@@ -39,9 +39,13 @@ class ProfileController extends Controller
 
     }
 
+    public function updatePhotoView(){
+        return view('profile.change-photo');
+    }
+
     public function updatePhoto(Request $request){
         $request->validate([
-            'photo' => 'required|mimes:png,jpeg,gif'
+            'photo' => 'required|file|mimes:png,jpeg,gif,max:1000'
         ]);
 
         $newName = uniqid()."_profile.".$request->file('photo')->extension();

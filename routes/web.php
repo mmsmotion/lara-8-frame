@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,9 +27,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware("auth")->group(function(){
     Route::view("test","test")->name('test');
+    Route::post("test",[TestController::class,'test'])->name('test');
 
     Route::prefix("profile")->name("profile.")->group(function(){
         Route::view("/","profile.index")->name('index');
+        Route::get('/change-photo',[ProfileController::class,'updatePhotoView'])->name('update-photo');
         Route::post('/change-photo',[ProfileController::class,'updatePhoto'])->name('update-photo');
         Route::get("/change-password",[ProfileController::class,'changePassword'])->name('change-password');
         Route::post("/change-password",[ProfileController::class,'updatePassword'])->name('change-password');

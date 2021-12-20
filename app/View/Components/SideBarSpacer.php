@@ -4,20 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class SideBarLink extends Component
+class SideBarSpacer extends Component
 {
-    public $link,$name,$class,$count;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($link="#",$name="Side Bar Link",$class="fas fa-link",$count=null)
+    public function __construct()
     {
-        $this->name = $name;
-        $this->link = $link;
-        $this->class = $class;
-        $this->count = $count;
+        //
     }
 
     /**
@@ -27,6 +23,6 @@ class SideBarLink extends Component
      */
     public function render()
     {
-        return view('components.side-bar-link');
+        return view('components.side-bar-spacer');
     }
 }

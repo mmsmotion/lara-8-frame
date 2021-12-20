@@ -4,20 +4,18 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class SideBarLink extends Component
+class Breadcrumb extends Component
 {
-    public $link,$name,$class,$count;
+    public $currentPage,$links;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($link="#",$name="Side Bar Link",$class="fas fa-link",$count=null)
+    public function __construct($currentPage="Current Page",$links=[])
     {
-        $this->name = $name;
-        $this->link = $link;
-        $this->class = $class;
-        $this->count = $count;
+        $this->currentPage = $currentPage;
+        $this->links = $links;
     }
 
     /**
@@ -27,6 +25,6 @@ class SideBarLink extends Component
      */
     public function render()
     {
-        return view('components.side-bar-link');
+        return view('components.breadcrumb');
     }
 }

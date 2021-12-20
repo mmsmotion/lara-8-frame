@@ -1,18 +1,18 @@
 @extends('layouts.app')
-@section('title') Change Password @stop
+@section('title') Change Photo @stop
 @section("content")
     @php $links = ['Profile'=>route('profile.index')] @endphp
-    <x-breadcrumb current-page="Change Page" :links="$links"></x-breadcrumb>
+    <x-breadcrumb current-page="Change Photo" :links="$links"></x-breadcrumb>
 
     <div class="row">
         <div class="col-md-6 col-lg-5 col-xl-4">
-            <x-card-frame title="Change Password">
-                <form action="{{ route('profile.change-password') }}" method="post">
+            <x-card-frame title="Change Photo">
+                <div class="">
+                    <img src="{{ asset('storage/user-photo/'.Auth::user()->photo) }}" class="d-block w-50 rounded-circle mx-auto" alt="">
+                </div>
+                <form action="{{ route('profile.update-photo') }}" method="post" enctype="multipart/form-data">
                     @csrf
-
-                    <x-input name="current_password" type="password" label="Current Password"></x-input>
-                    <x-input name="password" type="password" label="New Password"></x-input>
-                    <x-input name="password_confirmation" type="password" label="Confirm Password"></x-input>
+                    <x-input name="photo" type="file" label="Select New Photo"></x-input>
 
                     <div class="d-flex align-items-end justify-content-between">
                         <div class="form-check form-switch">
@@ -21,10 +21,13 @@
                                 Confirm
                             </label>
                         </div>
-                        <button class="btn btn-primary">Update</button>
+                        <button class="btn btn-primary">Upload</button>
                     </div>
                 </form>
+
             </x-card-frame>
         </div>
     </div>
-    @stop
+@stop
+
+

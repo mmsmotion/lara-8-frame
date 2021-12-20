@@ -1,58 +1,18 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+@section('title') Home @stop
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success"  role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                        <button class="aa btn btn-primary" >Show Alert</button>
-                        <button class="bb btn btn-primary" >Show toast</button>
-
-                </div>
-            </div>
+@section("content")
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-xl-6">
+            <x-card-frame title="Home">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque aut corporis cum deserunt dignissimos fugiat id, laborum, magni minus molestias nam, natus possimus quis saepe sapiente sit suscipit voluptates?
+                </p>
+            </x-card-frame>
         </div>
     </div>
-</div>
-@endsection
-@section("foot")
-    <script>
+@stop
 
-        document.querySelector(".aa").addEventListener("click",function (){
-            Swal.fire({
-                icon: 'info',
-                title: 'Oops...',
-                text: 'Something went wrong!',
-            })
-        });
 
-        document.querySelector(".bb").addEventListener("click",_=>{
 
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'center',
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-
-            Toast.fire({
-                icon: 'error',
-                title: 'Signed in successfully'
-            })
-        });
-
-    </script>
-@endsection

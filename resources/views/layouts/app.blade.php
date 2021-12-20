@@ -26,10 +26,10 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 bg-white shadow-sm">
+            <div class="col-lg-3 col-xl-2 bg-white shadow-sm">
                 @include('layouts.sidebar')
             </div>
-            <div class="col-lg-10">
+            <div class="col-lg-9 col-xl-10">
                 <div class="content">
                     @include('layouts.header')
                     @yield('content')

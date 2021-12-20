@@ -4,20 +4,19 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class SideBarLink extends Component
+class CardFrame extends Component
 {
-    public $link,$name,$class,$count;
+    public $title,$rightMenuText,$rightMenuLink;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($link="#",$name="Side Bar Link",$class="fas fa-link",$count=null)
+    public function __construct( $title="Cart Title",$rightMenuText=null,$rightMenuLink=null)
     {
-        $this->name = $name;
-        $this->link = $link;
-        $this->class = $class;
-        $this->count = $count;
+        $this->title = $title;
+        $this->rightMenuText = $rightMenuText;
+        $this->rightMenuLink = $rightMenuLink;
     }
 
     /**
@@ -27,6 +26,6 @@ class SideBarLink extends Component
      */
     public function render()
     {
-        return view('components.side-bar-link');
+        return view('components.card-frame');
     }
 }

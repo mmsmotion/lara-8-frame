@@ -4,20 +4,23 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class SideBarLink extends Component
+class Input extends Component
 {
-    public $link,$name,$class,$count;
+    public $margin,$name,$form,$class,$label,$type,$value;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($link="#",$name="Side Bar Link",$class="fas fa-link",$count=null)
+    public function __construct($margin="mb-3",$name=null,$form=null,$class=null,$label='Input Label',$type='text',$value=null)
     {
+        $this->margin = $margin;
         $this->name = $name;
-        $this->link = $link;
+        $this->form = $form;
         $this->class = $class;
-        $this->count = $count;
+        $this->label = $label;
+        $this->type = $type;
+        $this->value = $value;
     }
 
     /**
@@ -27,6 +30,6 @@ class SideBarLink extends Component
      */
     public function render()
     {
-        return view('components.side-bar-link');
+        return view('components.input');
     }
 }
