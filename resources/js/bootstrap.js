@@ -1,4 +1,5 @@
 window._ = require('lodash');
+window.VenoBox = require("venobox");
 
 try {
     window.bootstrap = require('bootstrap');
